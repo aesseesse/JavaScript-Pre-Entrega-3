@@ -28,18 +28,30 @@ function mostrarDestinatario() {
   `;
 }
 
+
+
+
+
+
+
+
 mostrarResumen()
 
 function mostrarResumen() {
+  const resumenCompras = localStorage.getItem('resumenCompras')
 
-  const resumenInfo = document.getElementById('resumen');
-  resumenInfo.innerHTML = '<h3>Resumen de compra:</h3>';
 
-  for (let i = 0; i < resumenCompras.length; i++) {
+  if (resumenCompras) {
+
+    // Generar el código HTML para mostrar los datos
+    const resumenDiv = document.getElementById('resumen');
+    resumenDiv.innerHTML = '<h3>Resumen de la compra:</h3>';
+
+    for (let i = 0; i < resumenCompras.length; i++) {
       const itemDiv = document.createElement('div');
       itemDiv.classList.add('item');
       itemDiv.innerHTML = `
-        <p>Producto: ${item.producto}</p>
+        <p>Producto: ${resumenCompras.producto}</p>
         <p>Precio: ${item.precio}</p>
         <p>Descuento: ${item.descuento}%</p>
         <p>Cantidad: ${item.cantidad}</p>
@@ -47,6 +59,7 @@ function mostrarResumen() {
         <p>Descuento Aplicado: ${item.descuentoAplicado}</p>
         <p>Total Producto: ${item.totalProducto}</p>
      `;
-  }
-  
+    }
+  } 
+ 
 }

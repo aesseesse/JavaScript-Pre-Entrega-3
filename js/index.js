@@ -69,7 +69,7 @@ function guardarCompras(resumenCompras) {
   }
   
   // Función para mostrar el resumen de la compra
-  export function mostrarResumen() {
+  function mostrarResumen() {
     const resumenDiv = document.getElementById('resumen');
     resumenDiv.innerHTML = '<h3>Resumen de la compra:</h3>';
   
