@@ -10,7 +10,13 @@ function obtenerCompras() {
 function guardarCompras(resumenCompras) {
   localStorage.setItem('resumenCompras', JSON.stringify(resumenCompras));
   }
-  
+
+// Función para guardar el total de la compra en el localStorage
+
+function guardarTotalCompras(totalCompras) {
+  localStorage.setItem('totalCompras', JSON.stringify(totalCompras));
+  }
+
   let total = 0;
   let items = obtenerCompras(); // Obtener compras existentes del localStorage
   
@@ -61,13 +67,19 @@ function guardarCompras(resumenCompras) {
     };
     // Agregar la compra a la lista de items
     items.push(item); 
-    // Guardar en localStorage
+    // Guardar en localStorage la compra detallada
     guardarCompras(items); 
-    
+
+  // Guardar en localStorage el total de la compra
+  guardarTotalCompras (total);
     // Mostrar resumen de la compra
     mostrarResumen();
   }
   
+
+
+
+
   // Función para mostrar el resumen de la compra
   function mostrarResumen() {
     const resumenDiv = document.getElementById('resumen');
@@ -79,12 +91,12 @@ function guardarCompras(resumenCompras) {
       itemDiv.classList.add('item');
       itemDiv.innerHTML = `
         <p>Producto: ${item.producto}</p>
-        <p>Precio: ${item.precio}</p>
+        <p>Precio: $${item.precio}</p>
         <p>Descuento: ${item.descuento}%</p>
         <p>Cantidad: ${item.cantidad}</p>
-        <p>Subtotal: ${item.subtotal}</p>
-        <p>Descuento Aplicado: ${item.descuentoAplicado}</p>
-        <p>Total Producto: ${item.totalProducto}</p>
+        <p>Subtotal: $${item.subtotal}</p>
+        <p>Descuento Aplicado: $${item.descuentoAplicado}</p>
+        <p>Total Producto: $${item.totalProducto}</p>
       `;
       resumenDiv.appendChild(itemDiv);
     });
